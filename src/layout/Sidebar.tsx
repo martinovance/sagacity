@@ -1,15 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { NAV } from "@/constants/sidebar";
-import { Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+  const { theme, setTheme } = useTheme();
+
   return (
     <nav aria-label="Workspace" className="flex h-full flex-col gap-1 p-3.5">
       <div className="font-answer px-2.5 pb-3.5 text-xl font-semibold">
-        Cairn
+        Sagacity
       </div>
       {/* TODO: workspace switcher (Acme Finance, members) */}
       <div className="mb-3.5 rounded-lg border bg-card px-3 py-2 text-sm">
@@ -42,10 +44,10 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           variant="ghost"
           size="icon"
           aria-label="Toggle theme"
-          // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="cursor-pointer"
         >
-          {/* {theme === "dark" ? <Sun /> : <Moon />} */}
-          <Moon />
+          {theme === "dark" ? <Sun /> : <Moon />}
         </Button>
       </div>
     </nav>

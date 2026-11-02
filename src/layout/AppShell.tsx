@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 
-export function AppShell() {
+export default function AppShell() {
   const [open, setOpen] = useState(false);
   return (
     <div className="flex h-dvh bg-background text-foreground">
@@ -30,8 +30,8 @@ export function AppShell() {
           <Button>
             <Menu />
           </Button>
-        </header>
-        <span className="font-answer text-lg font-semibold">Cairn</span>
+        </header>{" "}
+        {/* <span className="font-answer text-lg font-semibold">Cairn</span> */}
         <main className="min-h-0 flex-1">
           <Outlet />
         </main>
