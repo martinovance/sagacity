@@ -15,7 +15,7 @@ export default function MessageList({ messages, onCitationClick }: Props) {
             key={m.id}
             className="max-w-3/4 self-end rouded-2xl rounded-br-sm bg-primary px-4 py-3 text-primary-foreground"
           >
-            here we go with the streaming
+            {m.content}
           </div>
         ) : (
           <AnswerWithCitation

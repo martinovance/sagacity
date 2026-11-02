@@ -17,13 +17,15 @@ export default function AnswerWithCitation({
     <p className="font-answer max-w-prose text-[19px] leading-relaxed">
       {parts.map((part, i) => {
         const m = part.match(/^\[(\d+)\]$/);
+        if (!m) return part;
+
         return (
           <button
             key={i}
-            onClick={() => onCitationClick(Number(m![1!]))}
+            onClick={() => onCitationClick(Number(m[1]))}
             className="mx-0.5 -translate-y-0.5 rounded-md bg-cite px-1.5 font-sans text-[11px] font-semibold text-cite-foreground"
           >
-            {m![1!]}
+            {m[1]}
           </button>
         );
       })}

@@ -4,6 +4,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ThemeProvider from "./context/ThemeProvider";
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ const defaultOptions = {
 const queryClient = new QueryClient({
   defaultOptions,
   queryCache: new QueryCache({
-    onError: (err, query) => {
+    onError: (_err, query) => {
       if (query?.meta?.errorMessage) {
         // handle error appropriately, e.g. show a toast notification
       }
@@ -37,10 +38,12 @@ const queryClient = new QueryClient({
 
 const Providers = ({ children }: Props) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

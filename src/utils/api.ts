@@ -1,4 +1,3 @@
-/* eslint-disable */
 import axios from "axios";
 import Auth from "./auth";
 
@@ -15,7 +14,7 @@ Api.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // Api.interceptors.response.use(
