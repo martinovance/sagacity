@@ -1,10 +1,11 @@
 import type { ChatRequest, ChatStreamEvent } from "@/types/chat";
+import { base_url } from "@/utils/api";
 
 export async function* streamChat(
   req: ChatRequest,
   signal?: AbortSignal,
 ): AsyncGenerator<ChatStreamEvent> {
-  const res = await fetch(`{baseUrl}/stream/chat`, {
+  const res = await fetch(`${base_url}/stream/chat`, {
     method: "POST",
     signal,
     headers: {
